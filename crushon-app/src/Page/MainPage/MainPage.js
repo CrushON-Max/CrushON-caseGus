@@ -1,6 +1,6 @@
 import React from "react"
 import "./MainPage.css"
-import { Routes, Route, BrowserRouter, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 function MainPage(){
@@ -8,6 +8,12 @@ function MainPage(){
   const navigatetoSeller = () => {
     navigate('/Seller');
   };
+  const navigatetoTrademark = () => {
+    navigate('/Trademark')
+  }
+  const navigatetoAuthorization = () => {
+    navigate('Authorization')
+  }
 
 
     if (sessionStorage.getItem("user")==="admin") {
@@ -15,10 +21,9 @@ function MainPage(){
       return (
         <div class="countainer" id="mainpage">
           <nav class="Nav">
-            {/* <Link to="/Seller">test</Link> */}
             <h2 onClick={navigatetoSeller}>Seller</h2>
-            <h2>Trademark Authorization</h2>
-            <h2>Trademark</h2>
+            <h2 onClick={navigatetoAuthorization}>Trademark Authorization</h2>
+            <h2 onClick={navigatetoTrademark}>Trademark</h2>
           </nav>
         </div>
       );

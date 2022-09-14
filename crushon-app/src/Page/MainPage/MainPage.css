@@ -1,4 +1,6 @@
 .Nav{
     display: flex;
     flex-direction: row;
+    gap: 10%;
+    justify-content: center;
 }
