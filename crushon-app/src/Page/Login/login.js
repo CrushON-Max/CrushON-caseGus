@@ -1,27 +1,29 @@
 import {React, useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import "./login.css"
 
 function Login() {
-    
-    const [username, setusername] = useState([])
-    const [password, setpassword] = useState([])
+
+    const navigate = useNavigate();
+    const [username, setusername] = useState([]);
+    const [password, setpassword] = useState([]);
 
     function connect(username, password) {
+
       var admin = sessionStorage.getItem("username");
       var adminPassword = sessionStorage.getItem("password");
+
       if ((admin === username, adminPassword === password)) {
-        console.log("sucess");
-        window.location.href = "/MainPage";
+        sessionStorage.setItem("user","admin")
+        navigate('/mainpage')
+        // document.getElementById("login").style.display="none"
       }else{
         console.log("error")
       }
     }
 
-    // const connect = identification(username, password)
-
-
   return (
-    <div className="login">
+    <div className="countainer" id="login">
       <h1>Login</h1>
       <div>
         <h2>UserName</h2>

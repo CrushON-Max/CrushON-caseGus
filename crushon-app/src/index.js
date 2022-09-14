@@ -1,15 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Login from "./components/Login/login";
 import reportWebVitals from "./reportWebVitals";
-import Admin from "./components/Admin";
-import Road from "./Road";
+import Admin from "./feature/Admin";
+import Road from "./feature/Road";
+import Login from "./Page/Login/login"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <Login /> */}
-    {/* <Admin /> */}
+    <Admin />
     <Road />
   </React.StrictMode>
 );

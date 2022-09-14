@@ -1,6 +1,6 @@
 function Admin() {
     sessionStorage.setItem("username", "Admin");
-    sessionStorage.setItem("password","aiygze?5656")
+    sessionStorage.setItem("password","454588")
 }
 
 export default Admin;
