@@ -13,7 +13,7 @@ function Login() {
         console.log("sucess");
         window.location.href = "/MainPage";
       }else{
-        // console.log("error")
+        console.log("error")
       }
     }
 
