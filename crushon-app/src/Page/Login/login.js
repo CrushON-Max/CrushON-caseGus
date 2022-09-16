@@ -1,6 +1,24 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import "./login.css"
+
+const errorName = () => {
+  //Lors de la creation d'un nouveau vendeur
+  return (
+      <p>
+        Your username is false
+      </p>
+
+  );
+};
+
+const errorPassword = () => {
+  //Lors de la creation d'un nouveau vendeur
+  return <p>Your Password is false</p>;
+};
+
+
+
 
 function Login() {
 
@@ -9,16 +27,29 @@ function Login() {
     const [password, setpassword] = useState([]);
 
     function connect(username, password) {
-
+      let listSeller = localStorage.getItem("seller")
       var admin = sessionStorage.getItem("username");
       var adminPassword = sessionStorage.getItem("password");
 
       if ((admin === username, adminPassword === password)) {
+
         sessionStorage.setItem("user","admin")
         navigate('/mainpage')
-        // document.getElementById("login").style.display="none"
-      }else{
-        console.log("error")
+
+      }else if (listSeller != null) {
+
+        listSeller =  JSON.parse(listSeller)
+        const exist = listSeller.findIndex((e) => e?.name === username);
+        if (exist != -1){
+          if((listSeller[exist])?.password === password){
+            sessionStorage.setItem("user", exist)
+            navigate("/mainpage")
+          }else {
+            console.log("Mauvais mot de passe")
+          }
+        }else {
+          console.log("Mauvais identifiant")
+        }
       }
     }
 
@@ -42,6 +73,9 @@ function Login() {
       <button class="button" onClick={() => connect(username, password)}>
         Sign In
       </button>
+      <div id="error">
+
+      </div>
     </div>
   );
 }
