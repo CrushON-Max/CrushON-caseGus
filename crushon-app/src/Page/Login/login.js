@@ -1,11 +1,16 @@
-import {React, useState, useEffect} from 'react'
+import {React, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import "./login.css"
 
 const errorName = () => {
-  //Lors de la creation d'un nouveau vendeur
+  if (document.getElementById("FalsePassword") != null) {
+    document.getElementById("FalsePassword").style.display = "none"
+  }
+  if (document.getElementById("FalseName") != null) {
+    document.getElementById("FalseName").style.display = "block";
+  }
   return (
-      <p>
+      <p id="FalseName">
         Your username is false
       </p>
 
@@ -13,8 +18,14 @@ const errorName = () => {
 };
 
 const errorPassword = () => {
-  //Lors de la creation d'un nouveau vendeur
-  return <p>Your Password is false</p>;
+  if ((document.getElementById("FalseName")) != null){
+    document.getElementById("FalseName").style.display = "none"
+  }
+  if ((document.getElementById("FalsePassword")) != null) {
+    document.getElementById("FalsePassword").style.display = "block";
+  }
+    
+  return (<p id="FalsePassword">Your Password is false</p>)
 };
 
 
@@ -22,9 +33,12 @@ const errorPassword = () => {
 
 function Login() {
 
-    const navigate = useNavigate();
-    const [username, setusername] = useState([]);
-    const [password, setpassword] = useState([]);
+    const navigate = useNavigate()
+    const [username, setusername] = useState([])
+    const [password, setpassword] = useState([])
+
+    const [errUsername, seterrUsername] = useState([])
+    const [errPassword, seterrPassword] = useState([])
 
     function connect(username, password) {
       let listSeller = localStorage.getItem("seller")
@@ -32,10 +46,8 @@ function Login() {
       var adminPassword = sessionStorage.getItem("password");
 
       if ((admin === username, adminPassword === password)) {
-
         sessionStorage.setItem("user","admin")
         navigate('/mainpage')
-
       }else if (listSeller != null) {
 
         listSeller =  JSON.parse(listSeller)
@@ -45,10 +57,10 @@ function Login() {
             sessionStorage.setItem("user", exist)
             navigate("/mainpage")
           }else {
-            console.log("Mauvais mot de passe")
+            seterrPassword(errorPassword)
           }
         }else {
-          console.log("Mauvais identifiant")
+          seterrUsername(errorName)
         }
       }
     }
@@ -74,7 +86,8 @@ function Login() {
         Sign In
       </button>
       <div id="error">
-
+        {errUsername}
+        {errPassword}
       </div>
     </div>
   );
