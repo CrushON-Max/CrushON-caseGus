@@ -7,13 +7,12 @@ const errorEmail = () => {
     document.getElementById("FalsePassword").style.display = "none"
   }
   if (document.getElementById("FalseEmail") != null) {
-    document.getElementById("FalseEmail").style.display = "block";
+    document.getElementById("FalseEmail").style.display = "block"
   }
   return (
       <p id="FalseEmail">
-        Your username is false
+        Your email is false
       </p>
-
   );
 };
 
@@ -22,7 +21,7 @@ const errorPassword = () => {
     document.getElementById("FalseName").style.display = "none"
   }
   if ((document.getElementById("FalsePassword")) != null) {
-    document.getElementById("FalsePassword").style.display = "block";
+    document.getElementById("FalsePassword").style.display = "block"
   }
     
   return (<p id="FalsePassword">Your Password is false</p>)
@@ -40,8 +39,8 @@ function Login() {
 
     function connect(email, password) {
       let listSeller = localStorage.getItem("seller")
-      var admin = sessionStorage.getItem("email");
-      var adminPassword = sessionStorage.getItem("password");
+      var admin = sessionStorage.getItem("email")
+      var adminPassword = sessionStorage.getItem("password")
 
       if ((admin === email, adminPassword === password)) {
         sessionStorage.setItem("user","admin")
@@ -49,7 +48,7 @@ function Login() {
       }else if (listSeller != null) {
 
         listSeller =  JSON.parse(listSeller)
-        const exist = listSeller.findIndex((e) => e?.email === email);
+        const exist = listSeller.findIndex((e) => e?.email === email)
         if (exist != -1){
           if((listSeller[exist])?.password === password){
             sessionStorage.setItem("user", exist)

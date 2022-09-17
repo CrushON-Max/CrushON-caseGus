@@ -4,7 +4,7 @@ import Login from "../Page/Login/login"
 import Seller from "../components/Seller/selleradmin"
 import Authorization from "../components/AuthorizationM/Authorization";
 import Trademark from "../components/Trademark/Trademark";
-
+import TrademarkSeller from "../components/TrademarkSeller/trademarkseller";
 
 function Road() {
   return (
@@ -15,6 +15,7 @@ function Road() {
         <Route path="/Seller" element={<Seller />} />
         <Route path="/Trademark" element={<Trademark/>}/>
         <Route path="/Authorization" element={<Authorization/>}/>
+        <Route path="/trademarkseller" element={<TrademarkSeller/>}/>
       </Routes>
     </BrowserRouter>
   );

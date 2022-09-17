@@ -14,6 +14,9 @@ function MainPage(){
   const navigatetoAuthorization = () => {
     navigate('/Authorization')
   }
+  const navigatetotrademarkseller = () => {
+    navigate('/trademarkseller')
+  }
 
 
     if (sessionStorage.getItem("user")==="admin") {
@@ -31,11 +34,12 @@ function MainPage(){
             return (
               <div class="countainer" id="mainpage">
                 <nav class="Nav">
-                  <h2 onClick={navigatetoSeller}>Seller</h2>
+                  {/* <h2 onClick={navigatetoSeller}>Seller</h2>
                   <h2 onClick={navigatetoAuthorization}>
                     Trademark Authorization
-                  </h2>
+                  </h2> */}
                   <h2 onClick={navigatetoTrademark}>Trademark</h2>
+                  <h2 onClick={navigatetotrademarkseller}>Your market</h2>
                 </nav>
               </div>
             );
