@@ -6,3 +6,9 @@
 .error{
     color: red;
 }
+
+.boxProduct{
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    margin-right: 90%;
+    padding: 0.5%;
+}

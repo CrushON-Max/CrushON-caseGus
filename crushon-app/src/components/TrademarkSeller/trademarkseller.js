@@ -23,11 +23,9 @@ const infomrationProduct = (e) => {
       <p>Name: {e.name}</p>
       <p>Price: {e.price}</p>
       <p>Stock: {e.stock}</p>
-      <p>Brand: {e.brand}</p>
     </div>
   )
 }
-
 
 function TrademarkSeller() {
     const iduser = sessionStorage.getItem("user")
@@ -47,7 +45,6 @@ function TrademarkSeller() {
     const [namepro, setnamePro] = useState([])
     const [pricepro, setpricePro] = useState([])
     const [stockpro, setstockPro] = useState([])
-    const [brandpro, setbrandPro] = useState([])
 
     const [errorpro, seterrorPro] = useState([])
     const [newpro, setnewPro] = useState([])
@@ -55,7 +52,6 @@ function TrademarkSeller() {
     const showproduct = () => {
         if (document.getElementById("newproductadd") != undefined) {
             document.getElementById("newproductadd").style.display = "none"
-            console.log("bahoui")
         }
 
         document.getElementById("buttonC").style.display="none"
@@ -74,11 +70,10 @@ function TrademarkSeller() {
     let list = results.map((e) => {
       if (e != null) {
         return (
-          <div key={results.indexOf(e)}>
+          <div class="boxProduct" key={results.indexOf(e)}>
             <p>Name: {e.name}</p>
             <p>Price: {e.price}</p>
             <p>Stock: {e.stock}</p>
-            <p>Brand: {e.brand}</p>
           </div>
         )
       } else {
@@ -90,12 +85,12 @@ function TrademarkSeller() {
       }
     })
 
-    function creatnewproduct(name, price, stock, brand){
+    function creatnewproduct(name, price, stock){
 
-        if (name == '' || price === '' || stock === '' || brand === '' || (Array.isArray(name)) == true || (Array.isArray(price)) == true || (Array.isArray(stock)) == true || (Array.isArray(brand)) == true ){
+        if (name == '' || price === '' || stock === '' || (Array.isArray(name)) == true || (Array.isArray(price)) == true || (Array.isArray(stock)) == true ){
             seterrorPro(errproduct)
         }else{
-            let newProduct = new ObjProduct(name, price, stock, brand)
+            let newProduct = new ObjProduct(name, price, stock)
             let x = []
             x.push(newProduct)
             
@@ -139,27 +134,20 @@ function TrademarkSeller() {
         <div>
           <h5>Price Product:</h5>
           <input
-            type="text"
+            type="number"
             onChange={(e) => setpricePro(e.target.value)}
           ></input>
         </div>
         <div>
           <h5>Stock Product:</h5>
           <input
-            type="text"
+            type="number"
             onChange={(e) => setstockPro(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <h5>Brand Product:</h5>
-          <input
-            type="text"
-            onChange={(e) => setbrandPro(e.target.value)}
           ></input>
         </div>
         <button
           class="button"
-          onClick={() => creatnewproduct(namepro, pricepro, stockpro, brandpro)}
+          onClick={() => creatnewproduct(namepro, pricepro, stockpro)}
         >
           Valid
         </button>
