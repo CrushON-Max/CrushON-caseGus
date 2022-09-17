@@ -2,15 +2,15 @@ import {React, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import "./login.css"
 
-const errorName = () => {
+const errorEmail = () => {
   if (document.getElementById("FalsePassword") != null) {
     document.getElementById("FalsePassword").style.display = "none"
   }
-  if (document.getElementById("FalseName") != null) {
-    document.getElementById("FalseName").style.display = "block";
+  if (document.getElementById("FalseEmail") != null) {
+    document.getElementById("FalseEmail").style.display = "block";
   }
   return (
-      <p id="FalseName">
+      <p id="FalseEmail">
         Your username is false
       </p>
 
@@ -29,29 +29,27 @@ const errorPassword = () => {
 };
 
 
-
-
 function Login() {
 
     const navigate = useNavigate()
-    const [username, setusername] = useState([])
+    const [email, setemail] = useState([])
     const [password, setpassword] = useState([])
 
-    const [errUsername, seterrUsername] = useState([])
+    const [errEmail, seterrEmail] = useState([])
     const [errPassword, seterrPassword] = useState([])
 
-    function connect(username, password) {
+    function connect(email, password) {
       let listSeller = localStorage.getItem("seller")
-      var admin = sessionStorage.getItem("username");
+      var admin = sessionStorage.getItem("email");
       var adminPassword = sessionStorage.getItem("password");
 
-      if ((admin === username, adminPassword === password)) {
+      if ((admin === email, adminPassword === password)) {
         sessionStorage.setItem("user","admin")
         navigate('/mainpage')
       }else if (listSeller != null) {
 
         listSeller =  JSON.parse(listSeller)
-        const exist = listSeller.findIndex((e) => e?.name === username);
+        const exist = listSeller.findIndex((e) => e?.email === email);
         if (exist != -1){
           if((listSeller[exist])?.password === password){
             sessionStorage.setItem("user", exist)
@@ -60,7 +58,7 @@ function Login() {
             seterrPassword(errorPassword)
           }
         }else {
-          seterrUsername(errorName)
+          seterrEmail(errorEmail)
         }
       }
     }
@@ -69,10 +67,10 @@ function Login() {
     <div className="countainer" id="login">
       <h1>Login</h1>
       <div>
-        <h2>UserName</h2>
+        <h2>Email</h2>
         <input
           type="text"
-          onChange={(e) => setusername(e.target.value)}
+          onChange={(e) => setemail(e.target.value)}
         ></input>
       </div>
       <div>
@@ -82,11 +80,11 @@ function Login() {
           onChange={(e) => setpassword(e.target.value)}
         ></input>
       </div>
-      <button class="button" onClick={() => connect(username, password)}>
+      <button class="button" onClick={() => connect(email, password)}>
         Sign In
       </button>
       <div id="error">
-        {errUsername}
+        {errEmail}
         {errPassword}
       </div>
     </div>
