@@ -10,6 +10,23 @@ const errproduct = () => {
     )
 }
 
+const infomrationProduct = (e) => {
+  //Lors de la creation d'un nouveau produit
+    if (document.getElementById("newproductadd") != undefined) {
+    document.getElementById("newproductadd").style.display = "block"
+    }
+  return (
+    <div id="newproductadd">
+      <p>
+        You have add a new product to your list market
+      </p>
+      <p>Name: {e.name}</p>
+      <p>Price: {e.price}</p>
+      <p>Stock: {e.stock}</p>
+      <p>Brand: {e.brand}</p>
+    </div>
+  )
+}
 
 
 function TrademarkSeller() {
@@ -33,17 +50,52 @@ function TrademarkSeller() {
     const [brandpro, setbrandPro] = useState([])
 
     const [errorpro, seterrorPro] = useState([])
+    const [newpro, setnewPro] = useState([])
 
     const showproduct = () => {
+        if (document.getElementById("newproductadd") != undefined) {
+            document.getElementById("newproductadd").style.display = "none"
+            console.log("bahoui")
+        }
+
         document.getElementById("buttonC").style.display="none"
         document.getElementsByClassName("creatproduct")[0].style.display ="flex"
-    };
+    }
+
+    const results = [];
+    const listproductUser = UserConnect.product
+    //Permet de  verifier si la liste des produits est vide ou non
+    if (listproductUser != null) {
+      listproductUser.forEach((element) => {
+        results.push(element)
+      });
+    }
+    
+    let list = results.map((e) => {
+      if (e != null) {
+        return (
+          <div key={results.indexOf(e)}>
+            <p>Name: {e.name}</p>
+            <p>Price: {e.price}</p>
+            <p>Stock: {e.stock}</p>
+            <p>Brand: {e.brand}</p>
+          </div>
+        )
+      } else {
+        return (
+          <div>
+            <p>End of the list</p>
+          </div>
+        )
+      }
+    })
 
     function creatnewproduct(name, price, stock, brand){
+
         if (name == '' || price === '' || stock === '' || brand === '' || (Array.isArray(name)) == true || (Array.isArray(price)) == true || (Array.isArray(stock)) == true || (Array.isArray(brand)) == true ){
             seterrorPro(errproduct)
         }else{
-            let newProduct = new ObjProduct(name, price, stock, brand);
+            let newProduct = new ObjProduct(name, price, stock, brand)
             let x = []
             x.push(newProduct)
             
@@ -51,6 +103,7 @@ function TrademarkSeller() {
             if (UserConnect.product == undefined) {
                 listSeller[iduser].product=x
                 localStorage.setItem("seller", JSON.stringify(listSeller))
+                
             } else {
                 const listUserproduct = UserConnect.product
                 x.push.apply(x,listUserproduct)
@@ -58,11 +111,12 @@ function TrademarkSeller() {
                 console.log(listSeller[iduser].product)
                 localStorage.setItem("seller", JSON.stringify(listSeller))
             }
-            console.log(localStorage.getItem("seller"))
             
+            document.getElementsByClassName("creatproduct")[0].style.display = "none"
+            document.getElementById("buttonC").style.display = "block"
+            setnewPro(infomrationProduct(newProduct))
         }
     }
-
 
   return (
     <div>
@@ -72,6 +126,7 @@ function TrademarkSeller() {
       <button id="buttonC" onClick={showproduct}>
         Creat product
       </button>
+      {newpro}
       <div class="creatproduct">
         <h3>Creat a new product</h3>
         <div>
@@ -112,6 +167,7 @@ function TrademarkSeller() {
       </div>
       <div>
         <h3>List of your product</h3>
+        {list}
       </div>
     </div>
   );
