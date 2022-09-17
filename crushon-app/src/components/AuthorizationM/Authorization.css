@@ -2,3 +2,7 @@
     display: none;
     gap: 5%;
 }
+
+.errorBrand{
+    color: red;
+}

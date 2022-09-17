@@ -3,24 +3,109 @@ import "./Authorization.css"
 
 
 
-// const Authorizationbrand = () => {
-//   return(
-//     <div>
+const errorBrand = () => {
+  if (document.getElementsByClassName("errorBrand")[0] !== undefined) {
+    document.getElementsByClassName("errorBrand")[0].style.display = "block"
+  }
+    return (
+        <div class="errorBrand">
+            <p>You got something empty</p>
+        </div>
+    )
+}
 
-//     </div>
-//   )
-// }
+const newBrandinfo = (e) => {
+  if (document.getElementById("Nbrandino") != undefined){
+    document.getElementById("Nbrandino").style.display="block"
+  }
+    return (
+      <div id="Nbrandino">
+        <p>You have add a new brand</p>
+        <div>
+          <p>Name: {e.name}</p>
+          <p>Authorization: {e.autho}</p>
+        </div>
+      </div>
+    );
+}
 
 
 function Authorization() {
 
-  const [] = useState([])
-  const [] = useState([]);
+  const [nameBrand,setnamebrand] = useState([])
+  const [authoBrand,setauthobrand] = useState([])
+  const [errBrand,seterrbrand] = useState([])
+  const [newinfobrand, setnewinfobrand] = useState([])
 
-  const showbrand = () => {
-    document.getElementById("newbrand").style.display="flex"
+  class ObjBrand {
+    constructor(Name, autho) {
+      this.name = Name
+      this.autho = autho
+    }
   }
 
+let x = localStorage.getItem("brand")
+const results = []
+
+ if (x != null) {
+   JSON.parse(x).forEach((element) => {
+     results.push(element)
+   })
+ }
+ console.log(results)
+
+ let listAuthor = results.map((e) => {
+   if (e != null) {
+    if (e.autho === "authorized") {
+      return (
+        <div key={results.indexOf(e)}>
+          <p>Name: {e.name}</p>
+        </div>
+      );
+    }}
+ })
+
+  let listProhi = results.map((e) => {
+    if (e != null) {
+      if (e.autho === "prohibited") {
+        return (
+          <div key={results.indexOf(e)}>
+            <p>Name: {e.name}</p>
+          </div>
+        )
+    }}
+  })
+
+  const showbrand = () => {
+    if (document.getElementById("Nbrandino") != undefined){
+      document.getElementById("Nbrandino").style.display="none"
+    }
+      document.getElementById("newbrand").style.display = "flex";
+  }
+
+  function newBrand (name,autho){
+    if (name === "" || autho === "" || Array.isArray(name) === true || Array.isArray(autho) === true) {
+      seterrbrand(errorBrand)
+    } else {
+      const brand = new ObjBrand(name, autho)
+      let x = []
+      x.push(brand)
+      if (localStorage.getItem("brand") != null) {
+        let i = localStorage.getItem("brand")
+        x.push.apply(x, JSON.parse(i))
+      } else {
+        x.push(localStorage.getItem("brand"))
+      }
+      localStorage.setItem("brand", JSON.stringify(x))
+      setnewinfobrand(newBrandinfo(brand))
+      document.getElementById("newbrand").style.display = "none"
+      if (document.getElementsByClassName("errorbrand")[0] != undefined) {
+        document.getElementsByClassName("errorbrand")[0].style.display = "none";
+      }     
+    }
+  }
+
+ 
   return (
     <div>
       <div>
@@ -28,17 +113,22 @@ function Authorization() {
       </div>
       <div>
         <button onClick={showbrand}>Add new brand</button>
+        {newinfobrand}
         <div id="newbrand">
           <div>
             <h3>New Brand</h3>
           </div>
           <div>
             <h5>Name of the Brand</h5>
-            <input></input>
+            <input onChange={(e) => setnamebrand(e.target.value)}></input>
           </div>
           <div>
             <h5>Authorization</h5>
-            <select name="Authorization" id="">
+            <select
+              name="Authorization"
+              id=""
+              onChange={(e) => setauthobrand(e.target.value)}
+            >
               <option defaultValue hidden>
                 --Choose authorization--
               </option>
@@ -46,13 +136,21 @@ function Authorization() {
               <option value="prohibited">Prohibited</option>
             </select>
           </div>
+          <div>
+            <button onClick={() => newBrand(nameBrand, authoBrand)}>
+              Valid
+            </button>
+          </div>
+          {errBrand}
         </div>
       </div>
       <div>
         <h3>List of authorized brand</h3>
+        <div>{listAuthor}</div>
       </div>
       <div>
         <h3>List of prohibited brand</h3>
+        <div>{listProhi}</div>
       </div>
     </div>
   );
