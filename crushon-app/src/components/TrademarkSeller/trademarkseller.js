@@ -50,14 +50,15 @@ function TrademarkSeller() {
             
             if (UserConnect.product == undefined) {
                 listSeller[iduser].product=x
-                localStorage.setItem("seller", listSeller)
+                localStorage.setItem("seller", JSON.stringify(listSeller))
             } else {
                 const listUserproduct = UserConnect.product
-                console.log( listUserproduct)
-                x.push.apply(listUserproduct)
-                console.log( listUserproduct)
-
+                x.push.apply(x,listUserproduct)
+                listSeller[iduser].product = x
+                console.log(listSeller[iduser].product)
+                localStorage.setItem("seller", JSON.stringify(listSeller))
             }
+            console.log(localStorage.getItem("seller"))
             
         }
     }
