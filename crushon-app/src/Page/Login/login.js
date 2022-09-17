@@ -10,7 +10,7 @@ const errorEmail = () => {
     document.getElementById("FalseEmail").style.display = "block"
   }
   return (
-      <p id="FalseEmail">
+      <p class="error" id="FalseEmail">
         Your email is false
       </p>
   );
@@ -24,7 +24,11 @@ const errorPassword = () => {
     document.getElementById("FalsePassword").style.display = "block"
   }
     
-  return (<p id="FalsePassword">Your Password is false</p>)
+  return (
+    <p class="error" id="FalsePassword">
+      Your Password is false
+    </p>
+  );
 };
 
 

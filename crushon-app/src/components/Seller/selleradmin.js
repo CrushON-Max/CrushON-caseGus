@@ -27,14 +27,14 @@ const infomrationSeller = (e) => {
 function AdminSeller() {
     // localStorage.clear()
     class ObjSeller {
-        constructor(name, email, password) {
+        constructor(name, email, password, product) {
         this.name = name
         this.email = email
         this.password = password
+        this.product = product
         }
     }
     const [infoSel, setinfoSel] = useState([])
-    // const [listnone, setlistnone] = useState([])
     let x = localStorage.getItem("seller")
     const results = []
  
@@ -47,7 +47,6 @@ function AdminSeller() {
 
    let list = results.map((e) => {
      if (e!=null){ 
-            console.log()
             return (
             <div key={results.indexOf(e)}>
                 <p>Name: {e.name}</p>
@@ -58,15 +57,6 @@ function AdminSeller() {
             return(<div><p>End of the list</p></div>)
         }
     })
-    
-    // useEffect(() => {
-    //     if (results == 0) {
-    //         console.log("oui");
-    //         setlistnone(emptylist);
-    //     }
-    // })
- 
-    
 
     const showseller = () => {
         document.getElementsByClassName("creatSeller")[0].style.display="flex"
@@ -78,7 +68,7 @@ function AdminSeller() {
         let email = document.getElementById("email").value
         let password = document.getElementById("password").value
         let seller = new ObjSeller(name,email,password)
-        
+        console.log(seller)
         let x = []
         x.push(seller)
         if (localStorage.getItem("seller")!=null){
@@ -120,7 +110,6 @@ function AdminSeller() {
           </div>
         </div>
         {infoSel}
-        {/* {listnone} */}
       </div>
     );
 }
