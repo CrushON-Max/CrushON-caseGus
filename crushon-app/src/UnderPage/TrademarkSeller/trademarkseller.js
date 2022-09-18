@@ -2,6 +2,7 @@ import { React, useState } from "react"
 import "./trademarkseller.css"
 import Logout from "../../components/logout/logout"
 import Unconnected from "../../components/Unconnect/unconnect"
+import BackPage from "../../components/return/return"
 
 
 const errproduct = () => {
@@ -28,6 +29,7 @@ const infomrationProduct = (e) => {
     </div>
   )
 }
+
 
 function TrademarkSeller() {
   const [namepro, setnamePro] = useState([])
@@ -165,7 +167,10 @@ function TrademarkSeller() {
 
       return (
         <div>
-          <Logout />
+          <div class="nav">
+            <BackPage />
+            <Logout />
+          </div>
           <div>
             <h1>Your market {UserConnect.name}</h1>
           </div>
@@ -209,7 +214,7 @@ function TrademarkSeller() {
             {list}
           </div>
         </div>
-      )
+      );
   } 
 }
 

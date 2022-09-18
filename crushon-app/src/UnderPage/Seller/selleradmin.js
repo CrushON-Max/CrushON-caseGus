@@ -2,6 +2,7 @@ import { React, useState } from "react"
 import "./selleradmin.css"
 import Logout from "../../components/logout/logout"
 import Unconnected from "../../components/Unconnect/unconnect"
+import BackPage from "../../components/return/return"
 
 const infomrationSeller = (e) => {
     //Lors de la creation d'un nouveau vendeur
@@ -87,7 +88,10 @@ function AdminSeller() {
 
     return (
       <div class="container" id="Seller">
-        <Logout />
+        <div class="nav">
+          <BackPage />
+          <Logout />
+        </div>
         <div>
           <h3>List of Seller</h3>
           {list}
@@ -114,7 +118,7 @@ function AdminSeller() {
         </div>
         {infoSel}
       </div>
-    )
+    );
   }
 }
 

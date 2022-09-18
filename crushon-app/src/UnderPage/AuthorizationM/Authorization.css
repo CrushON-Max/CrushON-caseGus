@@ -6,3 +6,11 @@
 .errorBrand{
     color: red;
 }
+
+#back{
+    display: block;
+}
+
+.nav{
+    display: flex;
+}

@@ -2,7 +2,7 @@ import { React,  useState } from "react"
 import "./authorization.css"
 import Logout from "../../components/logout/logout"
 import Unconnected from "../../components/Unconnect/unconnect"
-
+import BackPage from "../../components/return/return";
 
 
 const errorBrand = () => {
@@ -30,7 +30,6 @@ const newBrandinfo = (e) => {
       </div>
     );
 }
-
 
 function Authorization() {
   const [nameBrand, setnamebrand] = useState([])
@@ -112,7 +111,10 @@ function Authorization() {
 
     return (
       <div>
-        <Logout />
+        <div class="nav">
+          <BackPage />
+          <Logout />
+        </div>
         <div>
           <h1>Authorization of Brand</h1>
         </div>
@@ -158,7 +160,7 @@ function Authorization() {
           <div>{listProhi}</div>
         </div>
       </div>
-    )
+    );
   }
 
   }
