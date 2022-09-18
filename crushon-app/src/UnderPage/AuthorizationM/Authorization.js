@@ -42,8 +42,8 @@ function Authorization() {
     return (<Unconnected />)
   } else {
     class ObjBrand {
-      constructor(Name, autho) {
-        this.name = Name
+      constructor(name, autho) {
+        this.name = name
         this.autho = autho
       }
     }

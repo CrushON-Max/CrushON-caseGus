@@ -12,3 +12,11 @@
     margin-right: 90%;
     padding: 0.5%;
 }
+
+option:disabled{
+    color:red;
+}
+
+option{
+    color: green;
+}
