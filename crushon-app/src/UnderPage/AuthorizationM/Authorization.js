@@ -110,7 +110,7 @@ function Authorization() {
     }
 
     return (
-      <div>
+      <div class="container">
         <div class="nav">
           <BackPage />
           <Logout />

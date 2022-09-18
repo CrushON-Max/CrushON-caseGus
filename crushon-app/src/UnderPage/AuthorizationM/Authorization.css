@@ -14,3 +14,7 @@
 .nav{
     display: flex;
 }
+
+.container{
+    padding: 5%;
+}

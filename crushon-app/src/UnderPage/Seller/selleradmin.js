@@ -47,7 +47,7 @@ function AdminSeller() {
     let list = results.map((e) => {
       if (e != null) {
         return (
-          <div key={results.indexOf(e)}>
+          <div class="boxProduct" key={results.indexOf(e)}>
             <p>Name: {e.name}</p>
             <p>Email: {e.email}</p>
             <p>Password: {e.password}</p>
@@ -93,10 +93,6 @@ function AdminSeller() {
           <Logout />
         </div>
         <div>
-          <h3>List of Seller</h3>
-          {list}
-        </div>
-        <div>
           <button onClick={showseller}>Creat Seller</button>
         </div>
         <div class="creatSeller">
@@ -117,6 +113,10 @@ function AdminSeller() {
           </div>
         </div>
         {infoSel}
+        <div>
+          <h3>List of Seller</h3>
+          {list}
+        </div>
       </div>
     );
   }

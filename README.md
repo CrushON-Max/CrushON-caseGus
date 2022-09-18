@@ -49,6 +49,7 @@ sur gustaveconstans@gmail.com
 Le compte rendu manque la fonctionnalité permettant au super admin de changer l'etat d'une marque.
 
 Option en plus :
+Verification de la validité du mail
 Creation de la page pour afficher les produits pour tout les utilisateurs
 Systeme de sécurité plus poussé (token,encrypt data)
 Systeme de filtre par marque
