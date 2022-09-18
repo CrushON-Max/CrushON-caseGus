@@ -35,10 +35,11 @@ function AdminSeller() {
     }
   }
   const [infoSel, setinfoSel] = useState([])
-  let x = localStorage.getItem("seller")
-  const results = []
 
   //Permet de  verifier si la liste des vendeurs est vide ou non
+  let x = localStorage.getItem("seller");
+  const results = [];
+
   if (x != null) {
     JSON.parse(x).forEach((element) => {
       results.push(element)

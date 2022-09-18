@@ -27,6 +27,13 @@ const infomrationProduct = (e) => {
   )
 }
 
+const brandselect = () => {
+    return(
+        <select></select>
+    )
+}
+
+
 function TrademarkSeller() {
     const iduser = sessionStorage.getItem("user")
     let listSeller = localStorage.getItem("seller")
