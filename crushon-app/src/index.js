@@ -1,9 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import reportWebVitals from "./reportWebVitals";
-import Admin from "./feature/Admin";
-import Road from "./feature/Road";
-import Login from "./Page/Login/login"
+import React from "react"
+import ReactDOM from "react-dom/client"
+import reportWebVitals from "./reportWebVitals"
+import Admin from "./feature/Admin"
+import Road from "./feature/Road"
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
