@@ -46,7 +46,11 @@ sur gustaveconstans@gmail.com
 
 # Option à ajouter : 
 <a name="option"></a>
+Case 1
 Le compte rendu manque la fonctionnalité permettant au super admin de changer l'etat d'une marque.
+
+Case2
+Mise en place de l'API WooCommerce Marketplace.
 
 Option en plus :
 Verification de la validité du mail,
