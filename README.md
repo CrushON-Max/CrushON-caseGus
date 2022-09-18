@@ -24,6 +24,8 @@ Le projet est développer en React.js
 
 Apres l'import du git, run `npm install`
 
+Ensuite pour lancer le projet, run `npm start`
+
 Lors de la première connexion le seul compte créer est celui du super administrateur. Les logs de connection basique sont:
 Email : admin@gmail.com
 Password : x729139
