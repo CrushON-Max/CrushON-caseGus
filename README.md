@@ -49,7 +49,7 @@ sur gustaveconstans@gmail.com
 Case 1
 Le compte rendu manque la fonctionnalité permettant au super admin de changer l'etat d'une marque.
 
-Case2
+Case 2
 Mise en place de l'API WooCommerce Marketplace.
 
 Option en plus :
