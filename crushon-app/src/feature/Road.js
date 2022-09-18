@@ -1,9 +1,9 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom"
-import MainPage from "../Page/MainPage/MainPage"
+import MainPage from "../Page/MainPage/mainmage"
 import Login from "../Page/Login/login"
 import Seller from "../UnderPage/Seller/selleradmin"
-import Authorization from "../UnderPage/AuthorizationM/Authorization"
-import Trademark from "../UnderPage/Trademark/Trademark"
+import Authorization from "../UnderPage/AuthorizationM/authorization"
+import Trademark from "../UnderPage/Trademark/trademark"
 import TrademarkSeller from "../UnderPage/TrademarkSeller/trademarkseller"
 
 function Road() {

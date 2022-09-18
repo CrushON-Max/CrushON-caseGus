@@ -1,7 +1,7 @@
 import { React, useState } from "react"
 import "./trademarkseller.css"
 import Logout from "../../components/logout/logout"
-import Unconnected from "../../components/Unconnect/Unconnect"
+import Unconnected from "../../components/Unconnect/unconnect"
 
 
 const errproduct = () => {

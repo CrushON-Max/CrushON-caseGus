@@ -1,8 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import reportWebVitals from "./reportWebVitals"
-import Admin from "./feature/Admin"
-import Road from "./feature/Road"
+import Admin from "./feature/admin"
+import Road from "./feature/road"
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
