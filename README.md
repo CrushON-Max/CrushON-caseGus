@@ -26,7 +26,7 @@
 <a name="faqs"></a>
 
 # Option à ajouter : 
-#   Systeme de filtre par marque
+ Systeme de filtre par marque
 #
 #
 #
